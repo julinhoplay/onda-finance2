@@ -10,12 +10,14 @@ Inicie o servidor de desenvolvimento: npm run dev
 
 Execute a suíte de testes: npm test
 
+
 Teste Unitário:
 Foi implementado um teste unitário para a store de autenticação/finanças. O teste valida se o saldo inicial está correto e se o valor é debitado corretamente após uma transferência bem-sucedida.
 <img width="798" height="127" alt="image" src="https://github.com/user-attachments/assets/ea830d1c-a48f-42e7-bb7a-3aaebbc48f42" />
 
+
 Segurança:
-• Engenharia reversa 
+• Engenharia reversa
 Ofuscação de Código: No processo de build (Vite), o código JavaScript é minificado e ofuscado, dificultando a leitura da lógica de negócio por terceiros.
 Variáveis de Ambiente (.env): Chaves de API e URLs sensíveis não são expostas diretamente no código-fonte, sendo gerenciadas por variáveis de ambiente injetadas apenas durante o deploy.
 Remoção de Logs: Configuração do compilador para remover console.log e comentários em ambiente de produção, evitando o vazamento de informações sobre o fluxo da aplicação.
