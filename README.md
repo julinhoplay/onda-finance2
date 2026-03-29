@@ -1,9 +1,13 @@
 Link: https://onda-finance2.vercel.app
 
 Como rodar o projeto:
+
 Git Clone: https://github.com/julinhoplay/onda-finance2.git
+
 Instale as dependências: npm install
+
 Inicie o servidor de desenvolvimento: npm run dev
+
 Execute a suíte de testes: npm test
 
 Teste Unitário:
@@ -25,11 +29,16 @@ Prevenção de XSS: O React, por padrão, já realiza o escape de conteúdos, e 
 Decisões técnicas adotadas:
 Zod + React Hook Form: Utilize essa combinação para garantir que a validação dos dados de transferência (como o erro TS2345 que tratamos) ocorra de forma síncrona com o TypeScript, garantindo que o 
 usuário não envie valores inválidos.
+
 Vitest: Optei pelo Vitest por ser a ferramenta nativa do ecossistema Vite, permitindo testes extremamente rápidos e integração total com as configurações globais do projeto.
+
 Componentização: O código foi estruturado em componentes atômicos (Button, Input, Card) para facilitar a manutenção e a reutilização no futuro.
 
 Melhorias futuras
 Extrato Detalhado: Implementar uma lista histórica de todas as transferências realizadas.
+
 Persistência de Dados: Adicionar localStorage ou integração com Firebase/Supabase para que os dados não sumam ao atualizar a página.
+
 Dark Mode: Adicionar suporte a temas utilizando as classes nativas do Tailwind CSS.
+
 Notificações (Toasts): Feedback visual mais amigável ao finalizar uma transferência ou ocorrer um erro.
