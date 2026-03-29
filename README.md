@@ -21,12 +21,14 @@ Variáveis de Ambiente (.env): Chaves de API e URLs sensíveis não são exposta
 Remoção de Logs: Configuração do compilador para remover console.log e comentários em ambiente de produção, evitando o vazamento de informações sobre o fluxo da aplicação.
 
 • Prevenção de Vazamento de Dados:
+
 Validação Estrita com Zod: Implementada para garantir que apenas dados no formato correto cheguem à camada de processamento, prevenindo ataques de injection ou inputs maliciosos no formulário.
 Sanitização de Estado: O uso do Zustand permite o controle granular de quais dados estão na memória. Em um cenário real, dados sensíveis seriam criptografados antes de serem armazenados no localStorage.
 HTTPS/TLS: Garantia de que todos os dados trafegados entre o cliente (Vercel) e qualquer API futura sejam criptografados via protocolo HTTPS.
 Prevenção de XSS: O React, por padrão, já realiza o escape de conteúdos, e o uso de tipagem estrita com TypeScript reduz drasticamente a chance de execução de scripts não autorizados.
 
 Decisões técnicas adotadas:
+
 Zod + React Hook Form: Utilize essa combinação para garantir que a validação dos dados de transferência (como o erro TS2345 que tratamos) ocorra de forma síncrona com o TypeScript, garantindo que o 
 usuário não envie valores inválidos.
 
@@ -35,6 +37,7 @@ Vitest: Optei pelo Vitest por ser a ferramenta nativa do ecossistema Vite, permi
 Componentização: O código foi estruturado em componentes atômicos (Button, Input, Card) para facilitar a manutenção e a reutilização no futuro.
 
 Melhorias futuras:
+
 Extrato Detalhado: Implementar uma lista histórica de todas as transferências realizadas.
 
 Persistência de Dados: Adicionar localStorage ou integração com Firebase/Supabase para que os dados não sumam ao atualizar a página.
