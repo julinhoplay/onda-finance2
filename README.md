@@ -34,7 +34,7 @@ Vitest: Optei pelo Vitest por ser a ferramenta nativa do ecossistema Vite, permi
 
 Componentização: O código foi estruturado em componentes atômicos (Button, Input, Card) para facilitar a manutenção e a reutilização no futuro.
 
-Melhorias futuras
+Melhorias futuras:
 Extrato Detalhado: Implementar uma lista histórica de todas as transferências realizadas.
 
 Persistência de Dados: Adicionar localStorage ou integração com Firebase/Supabase para que os dados não sumam ao atualizar a página.
