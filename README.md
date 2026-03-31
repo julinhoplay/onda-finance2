@@ -16,39 +16,28 @@ Foi implementado um teste unitário para a store de autenticação/finanças. O 
 <img width="798" height="127" alt="image" src="https://github.com/user-attachments/assets/ea830d1c-a48f-42e7-bb7a-3aaebbc48f42" />
 
 
-Segurança:
+🛡️ Pensando em Segurança
+Mais do que apenas código, tratei a segurança como parte fundamental da arquitetura do Onda Finance:
 
-• Engenharia reversa
-Ofuscação de Código: No processo de build (Vite), o código JavaScript é minificado e ofuscado, dificultando a leitura da lógica de negócio por terceiros.
-Variáveis de Ambiente (.env): Chaves de API e URLs sensíveis não são expostas diretamente no código-fonte, sendo gerenciadas por variáveis de ambiente injetadas apenas durante o deploy.
-Remoção de Logs: Configuração do compilador para remover console.log e comentários em ambiente de produção, evitando o vazamento de informações sobre o fluxo da aplicação.
+Proteção contra Engenharia Reversa: Durante o build com o Vite, o código é minificado e ofuscado. Isso significa que a lógica do negócio não fica exposta de forma clara, protegendo a propriedade intelectual da aplicação.
 
-• Prevenção de Vazamento de Dados:
+Blindagem de Dados: * Utilizei o Zod para garantir que apenas dados válidos cheguem à nossa "carteira". Isso bloqueia tentativas de inputs maliciosos logo na entrada.
+. Com o Zustand, mantenho um controle rígido do estado na memória. Em uma evolução real, esses dados seriam criptografados antes de qualquer persistência.
 
-Validação Estrita com Zod: Implementada para garantir que apenas dados no formato correto cheguem à camada de processamento, prevenindo ataques de injection ou inputs maliciosos no formulário.
+Tráfego Seguro: O projeto já roda sob HTTPS/TLS na Vercel, garantindo que a comunicação entre o usuário e o site seja sempre criptografada. Além disso, a tipagem estrita do TypeScript atua como uma barreira extra contra ataques comuns como o XSS.
 
-Sanitização de Estado: O uso do Zustand permite o controle granular de quais dados estão na memória. Em um cenário real, dados sensíveis seriam criptografados antes de serem armazenados no localStorage.
+🧠 Por que essas escolhas? (Decisões Técnicas)
+Escolhi cada ferramenta com um propósito claro: performance e segurança.
 
-HTTPS/TLS: Garantia de que todos os dados trafegados entre o cliente (Vercel) e qualquer API futura sejam criptografados via protocolo HTTPS.
+Zod + React Hook Form: Usei essa dupla para criar formulários que não apenas funcionam, mas que "conversam" com o TypeScript. Isso evita que o usuário envie valores inválidos (como números negativos) e nos dá um feedback em tempo real com total segurança de tipos.
 
-Prevenção de XSS: O React, por padrão, já realiza o escape de conteúdos, e o uso de tipagem estrita com TypeScript reduz drasticamente a chance de execução de scripts não autorizados.
+Vitest: Como o projeto usa Vite, o Vitest foi a escolha natural. Ele é incrivelmente rápido e me permitiu validar a lógica de saldo e transferências de forma isolada, garantindo que o coração da aplicação esteja sempre saudável.
 
-Decisões técnicas adotadas:
+Componentização Inteligente: Segmentei a interface em componentes como Button, Input e Card. Isso não só deixa o código mais limpo, como facilita muito a manutenção e o crescimento do projeto no futuro.
 
+🚀 O que vem por aí? (Melhorias Futuras)
+Extrato Detalhado: Quero dar ao usuário a visão completa de suas movimentações com uma lista histórica de transferências.
 
-Zod + React Hook Form: Utilize essa combinação para garantir que a validação dos dados de transferência (como o erro TS2345 que tratamos) ocorra de forma síncrona com o TypeScript, garantindo que o 
-usuário não envie valores inválidos.
+Persistência Real: O próximo passo é integrar um localStorage ou um backend (como Supabase) para que o saldo e as transações continuem lá mesmo após o F5.
 
-Vitest: Optei pelo Vitest por ser a ferramenta nativa do ecossistema Vite, permitindo testes extremamente rápidos e integração total com as configurações globais do projeto.
-
-Componentização: O código foi estruturado em componentes atômicos (Button, Input, Card) para facilitar a manutenção e a reutilização no futuro.
-
-Melhorias futuras:
-
-Extrato Detalhado: Implementar uma lista histórica de todas as transferências realizadas.
-
-Persistência de Dados: Adicionar localStorage ou integração com Firebase/Supabase para que os dados não sumam ao atualizar a página.
-
-Dark Mode: Adicionar suporte a temas utilizando as classes nativas do Tailwind CSS.
-
-Notificações (Toasts): Feedback visual mais amigável ao finalizar uma transferência ou ocorrer um erro.
+Experiência do Usuário (UX): Adicionar um Dark Mode nativo com Tailwind e notificações (Toasts) para que o usuário receba um feedback visual imediato ao realizar uma operação.
